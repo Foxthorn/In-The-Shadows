@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 99807099}
   m_Layer: 5
   m_Name: lvl_2
-  m_TagString: Untagged
+  m_TagString: lvl_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 99807100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076103677}
+        m_MethodName: LoadLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &99807100
@@ -449,7 +460,7 @@ GameObject:
   - component: {fileID: 650086914}
   m_Layer: 0
   m_Name: lvl_2
-  m_TagString: Untagged
+  m_TagString: lvl_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546,7 +557,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.61764705, g: 0.5859672, b: 0.49956748, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -596,6 +607,7 @@ GameObject:
   - component: {fileID: 925131308}
   - component: {fileID: 925131310}
   - component: {fileID: 925131309}
+  - component: {fileID: 925131311}
   m_Layer: 5
   m_Name: LevelName
   m_TagString: Untagged
@@ -633,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.11764705, g: 0.116782, b: 0.116782, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -660,6 +672,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 925131307}
+--- !u!114 &925131311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925131307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abaf2d9df69704f159942fc0dcbb140c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &948888698
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +696,7 @@ GameObject:
   - component: {fileID: 948888700}
   m_Layer: 5
   m_Name: lvl_1
-  m_TagString: Untagged
+  m_TagString: lvl_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -735,7 +758,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 948888701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076103677}
+        m_MethodName: LoadLevel1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &948888701
@@ -853,6 +887,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1076103676}
+  - component: {fileID: 1076103677}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -873,6 +908,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076103677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076103675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5906ae317b68f4083ba1cf6bd3b17942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 2112530896}
+  - {fileID: 650086912}
+  - {fileID: 1764666950}
+  numUnlockedLevels: 1
 --- !u!1 &1105990625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1147,7 @@ GameObject:
   - component: {fileID: 1764666952}
   m_Layer: 0
   m_Name: lvl_3
-  m_TagString: Untagged
+  m_TagString: lvl_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1502,7 +1553,7 @@ GameObject:
   - component: {fileID: 2074331747}
   m_Layer: 5
   m_Name: lvl_3
-  m_TagString: Untagged
+  m_TagString: lvl_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1564,7 +1615,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2074331748}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076103677}
+        m_MethodName: LoadLevel3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2074331748
@@ -1711,7 +1773,7 @@ GameObject:
   - component: {fileID: 2112530898}
   m_Layer: 0
   m_Name: lvl_1
-  m_TagString: Untagged
+  m_TagString: lvl_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

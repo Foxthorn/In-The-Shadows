@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Fire
   - Rotate_Object
+  - lvl_1
+  - lvl_2
+  - lvl_3
   layers:
   - Default
   - TransparentFX
