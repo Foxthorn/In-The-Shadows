@@ -5,9 +5,8 @@ using UnityEngine;
 public class HorizontalRotation : MonoBehaviour {
 
 	public float rotationSpeed = 10f;
-	[HideInInspector] public float maxRange = 100f;
-	[HideInInspector] public float minRange = 85f;
-
+	[HideInInspector] public float maxRangeY = 0f;
+	[HideInInspector] public float minRangeY = 0f;
 	float horizontal;
 	// Use this for initialization
 	void Start () {
@@ -22,7 +21,8 @@ public class HorizontalRotation : MonoBehaviour {
 		{
 			RaycastHit hit;
 			if (Physics.Raycast(mousePosition, out hit))
-				RotateObject();
+				if (hit.collider.transform.tag == "Rotate_Object")
+					RotateObject();
 		}
 		CheckIfFinished();
 	}
@@ -36,7 +36,7 @@ public class HorizontalRotation : MonoBehaviour {
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.y >= minRange && transform.eulerAngles.y <= maxRange)
+			if (transform.eulerAngles.y >= minRangeY && transform.eulerAngles.y <= maxRangeY)
 			{
 				Debug.Log("Level Finished");	
 			}
