@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager gm;
 	public List<GameObject> levels = new List<GameObject>();
-	[HideInInspector] public int numUnlockedLevels = 0;
+	[HideInInspector] public int numUnlockedLevels;
 	// Use this for initialization
 	void Start () {
 		if (gm == null)
@@ -28,8 +28,11 @@ public class GameManager : MonoBehaviour {
 	{
 		for(int i = 0; i < numUnlockedLevels; i++)
 		{
-			var spotlight = levels[i].transform.GetChild(0);
-			spotlight.gameObject.SetActive(true);
+			if (i < levels.Count)
+			{
+				var spotlight = levels[i].transform.GetChild(0);
+				spotlight.gameObject.SetActive(true);
+			}
 		}
 	}
 
