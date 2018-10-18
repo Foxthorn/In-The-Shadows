@@ -1,0 +1,6 @@
+Library/
+Temp/
+UnityPackageManager/
+.DS_Store
+Assembly-CSharp*
+In the Shadows.sln
