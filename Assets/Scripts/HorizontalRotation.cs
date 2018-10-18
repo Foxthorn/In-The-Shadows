@@ -18,7 +18,7 @@ public class HorizontalRotation : MonoBehaviour {
 	void Update () {
 		horizontal = Input.GetAxis("Mouse X");
 		var mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Input.GetKey(KeyCode.Mouse0))
+		if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
 		{
 			RaycastHit hit;
 			if (Physics.Raycast(mousePosition, out hit))
