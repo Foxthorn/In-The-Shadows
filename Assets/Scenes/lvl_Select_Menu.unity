@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1076103677}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel2
         m_Mode: 1
         m_Arguments:
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1076103677}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel1
         m_Mode: 1
         m_Arguments:
@@ -879,12 +879,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990286964}
---- !u!114 &1076103677 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114364332935420290, guid: 54e3ac85214124fea80806d9fe4a59aa,
-    type: 2}
-  m_PrefabInternal: {fileID: 1911447160}
-  m_Script: {fileID: 11500000, guid: 5906ae317b68f4083ba1cf6bd3b17942, type: 3}
 --- !u!1 &1105990625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,67 +1174,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1764666950}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1911447160
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 15.814232
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 72.64101
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 40.388535
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4468020258495810, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585593967597228, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 114364332935420290, guid: 54e3ac85214124fea80806d9fe4a59aa,
-        type: 2}
-      propertyPath: levels.Array.data[0]
-      value: 
-      objectReference: {fileID: 2112530896}
-    - target: {fileID: 114364332935420290, guid: 54e3ac85214124fea80806d9fe4a59aa,
-        type: 2}
-      propertyPath: levels.Array.data[1]
-      value: 
-      objectReference: {fileID: 650086912}
-    - target: {fileID: 114364332935420290, guid: 54e3ac85214124fea80806d9fe4a59aa,
-        type: 2}
-      propertyPath: levels.Array.data[2]
-      value: 
-      objectReference: {fileID: 1764666950}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 54e3ac85214124fea80806d9fe4a59aa, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1922545447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1330,7 @@ GameObject:
   - component: {fileID: 2033774172}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Level_Buttons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1638,7 +1571,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1076103677}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadLevel3
         m_Mode: 1
         m_Arguments:
@@ -1694,7 +1627,7 @@ GameObject:
   - component: {fileID: 2085560887}
   m_Layer: 0
   m_Name: Level_Select
-  m_TagString: Untagged
+  m_TagString: Level_Select
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,9 +5,10 @@ using UnityEngine;
 public class HorizontalRotation : MonoBehaviour {
 
 	public float rotationSpeed = 10f;
-	[HideInInspector] public float maxRangeY = 0f;
-	[HideInInspector] public float minRangeY = 0f;
+	public GameObject shadow;
+
 	float horizontal;
+	bool canRotate = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,14 +18,19 @@ public class HorizontalRotation : MonoBehaviour {
 	void Update () {
 		horizontal = Input.GetAxis("Mouse X");
 		var mousePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
+		if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
 		{
 			RaycastHit hit;
 			if (Physics.Raycast(mousePosition, out hit))
 				if (hit.collider.transform.tag == "Rotate_Object")
-					RotateObject();
+					canRotate = true;
+				else
+					canRotate = false;
 		}
+		if (canRotate && Input.GetKey(KeyCode.Mouse0))
+			RotateObject();
 		CheckIfFinished();
+		shadow.transform.rotation = transform.rotation;
 	}
 
 	void RotateObject()
@@ -32,13 +38,13 @@ public class HorizontalRotation : MonoBehaviour {
 		transform.Rotate(transform.up * horizontal * rotationSpeed);
 	}
 
-	public bool CheckIfFinished()
+	bool CheckIfFinished()
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.y >= minRangeY && transform.eulerAngles.y <= maxRangeY)
+			if (transform.eulerAngles.y >= GameManager.gm.minRangeY && transform.eulerAngles.y <= GameManager.gm.maxRangeY)
 			{
-				Debug.Log("Level Finished");	
+				LevelManager.lm.LevelComplete();	
 			}
 		}
 		return false;

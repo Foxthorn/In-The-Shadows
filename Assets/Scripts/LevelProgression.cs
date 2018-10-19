@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class LevelProgression : MonoBehaviour {
+
+	public string lvl;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 	IEnumerator LoadLevel()
 	{
 		AsyncOperation asyncLoadLevel;
-		asyncLoadLevel = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+		asyncLoadLevel = SceneManager.LoadSceneAsync("lvl_Select_Menu");
 		while (!asyncLoadLevel.isDone) 
 		{
 			GameManager.gm.loadedLevels = true;
@@ -29,15 +31,8 @@ public class MainMenu : MonoBehaviour {
 	public void LoadLevelSelect()
 	{		
 		StartCoroutine(LoadLevel());
-		GameManager.gm.completed_levels.Add("lvl_1");
-	}
-
-	public void LoadTest()
-	{
-		StartCoroutine(LoadLevel());
-		GameManager.gm.completed_levels.Add("lvl_1");
-		GameManager.gm.completed_levels.Add("lvl_2");
-		GameManager.gm.completed_levels.Add("lvl_3");
+		GameManager.gm.numUnlockedLevels += 1;
+		GameManager.gm.startedLevel = false;
 	}
 
 	public void Quit()
