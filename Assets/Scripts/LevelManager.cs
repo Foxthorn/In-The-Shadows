@@ -9,18 +9,24 @@ public class LevelManager : MonoBehaviour {
 	public static LevelManager lm;
 	public GameObject title;
 
+	bool x_rot;
+	bool y_rot;
 	Text t;
 	// Use this for initialization
 	void Start () {
 		if (lm == null)
 			lm = this;
 		t = title.GetComponent<Text>();
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "lvl_1")
+			x_rot = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (t.fontSize >= 50)
+		if (t.fontSize >= 50) {
 			SceneManager.LoadScene("Level_Won");
+		}
 	}
 
 	IEnumerator LevelWonTitle()
@@ -32,8 +38,21 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	public void LevelComplete()
+	public void LevelComplete(Direction dir)
 	{
-		StartCoroutine(LevelWonTitle());
+		Debug.Log(dir);;
+		if (dir == Direction.x)
+			x_rot = true;
+		else
+			y_rot = true;
+
+		if (x_rot && y_rot)
+			StartCoroutine(LevelWonTitle());
+	}
+
+	public enum Direction
+	{
+		x = 0,
+		y = 1
 	}
 }

@@ -27,7 +27,7 @@ public class HorizontalRotation : MonoBehaviour {
 				else
 					canRotate = false;
 		}
-		if (canRotate && Input.GetKey(KeyCode.Mouse0))
+		if (canRotate && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
 			RotateObject();
 		CheckIfFinished();
 		shadow.transform.rotation = transform.rotation;
@@ -35,16 +35,18 @@ public class HorizontalRotation : MonoBehaviour {
 
 	void RotateObject()
 	{
-		transform.Rotate(transform.up * horizontal * rotationSpeed);
+		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + horizontal * rotationSpeed, transform.eulerAngles.z);
 	}
 
 	bool CheckIfFinished()
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.y >= GameManager.gm.minRangeY && transform.eulerAngles.y <= GameManager.gm.maxRangeY)
+			Debug.Log(GameManager.gm.maxRangeY);
+			Debug.Log(transform.eulerAngles.y);
+			if (transform.eulerAngles.y >= GameManager.gm.minRangeY && (transform.eulerAngles.y <= GameManager.gm.maxRangeY || transform.eulerAngles.y <= 340f - GameManager.gm.maxRangeY && transform.eulerAngles.y <= 340f - GameManager.gm.minRangeY))
 			{
-				LevelManager.lm.LevelComplete();	
+				LevelManager.lm.LevelComplete(LevelManager.Direction.y);	
 			}
 		}
 		return false;

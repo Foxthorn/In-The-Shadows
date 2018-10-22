@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector] public bool loadedLevels = false;
 	[HideInInspector] public float minRangeY = 0f;
 	[HideInInspector] public float maxRangeY = 0f;
+	[HideInInspector] public float minRangeX = 0f;
+	[HideInInspector] public float maxRangeX = 0f;
 	[HideInInspector] public bool startedLevel = false;
 
 
@@ -89,8 +91,7 @@ public class GameManager : MonoBehaviour {
 
 	void ActivateSpotLights()
 	{
-		Debug.Log(numUnlockedLevels);
-		for(int i = 0; i <= numUnlockedLevels; i++)
+		for(int i = 0; i < numUnlockedLevels; i++)
 		{
 			if (i < levels.Count)
 			{
@@ -111,10 +112,15 @@ public class GameManager : MonoBehaviour {
 
 	public void LoadLevel2()
 	{
-		if (completed_levels.Count >= 2)
+		Debug.Log(completed_levels.Count);
+		if (completed_levels.Count >= 1)
 		{
-			Debug.Log("Level 2");
-			Debug.Log(numUnlockedLevels);
+			startedLevel = true;
+			minRangeY = 70f;
+			maxRangeY = 80f;
+			minRangeX = 85;
+			maxRangeX = 100f;
+			SceneManager.LoadScene("lvl_2");
 		}
 	}
 
