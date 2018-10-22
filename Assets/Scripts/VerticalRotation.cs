@@ -21,7 +21,7 @@ public class VerticalRotation : MonoBehaviour {
 		{
 			RaycastHit hit;
 			if (Physics.Raycast(mousePosition, out hit))
-				if (hit.collider.transform.tag == "Rotate_Object")
+				if (hit.collider.transform.tag == transform.tag)
 					canRotate = true;
 				else
 					canRotate = false;

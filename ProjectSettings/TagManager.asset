@@ -11,6 +11,7 @@ TagManager:
   - lvl_3
   - Level_Select
   - Level_Buttons
+  - Rotate_Object_2
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class HorizontalRotation : MonoBehaviour {
 		{
 			RaycastHit hit;
 			if (Physics.Raycast(mousePosition, out hit))
-				if (hit.collider.transform.tag == "Rotate_Object")
+				if (hit.collider.transform.tag == transform.tag)
 					canRotate = true;
 				else
 					canRotate = false;
@@ -42,8 +42,6 @@ public class HorizontalRotation : MonoBehaviour {
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			Debug.Log(GameManager.gm.maxRangeY);
-			Debug.Log(transform.eulerAngles.y);
 			if (transform.eulerAngles.y >= GameManager.gm.minRangeY && (transform.eulerAngles.y <= GameManager.gm.maxRangeY || transform.eulerAngles.y <= 340f - GameManager.gm.maxRangeY && transform.eulerAngles.y <= 340f - GameManager.gm.minRangeY))
 			{
 				LevelManager.lm.LevelComplete(LevelManager.Direction.y);	
