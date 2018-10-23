@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour {
 	public void LoadLevelSelect()
 	{		
 		StartCoroutine(LoadLevel());
+		GameManager.gm.numUnlockedLevels = 1;
 		GameManager.gm.completed_levels.Add("lvl_1");
 	}
 

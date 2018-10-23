@@ -300,6 +300,10 @@ Prefab:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4a550c010b93e4de19e007781e7372aa, type: 3}
+      propertyPath: m_TagString
+      value: Rotate_Object
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a550c010b93e4de19e007781e7372aa, type: 3}
   m_IsPrefabParent: 0

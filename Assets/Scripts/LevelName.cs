@@ -22,7 +22,7 @@ public class LevelName : MonoBehaviour {
 			if (hit.collider.transform.tag == "lvl_2")
 				levelName = "Troublesome Trumpet";
 			if (hit.collider.transform.tag == "lvl_3")
-				levelName = "";
+				levelName = "School";
 		title.text = levelName;
 		levelName = "";
 	}

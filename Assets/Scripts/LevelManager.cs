@@ -9,8 +9,9 @@ public class LevelManager : MonoBehaviour {
 	public static LevelManager lm;
 	public GameObject title;
 
-	bool x_rot;
-	bool y_rot;
+	bool x_rot = false;
+	bool y_rot = false;
+	bool y_pos = false;
 	Text t;
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,14 @@ public class LevelManager : MonoBehaviour {
 		t = title.GetComponent<Text>();
 		Scene scene = SceneManager.GetActiveScene();
 		if (scene.name == "lvl_1")
+		{
 			x_rot = true;
+			y_pos = true;
+		}
+		else if (scene.name == "lvl_2")
+		{
+			y_pos = true;
+		}
 	}
 	
 	// Update is called once per frame
@@ -40,19 +48,20 @@ public class LevelManager : MonoBehaviour {
 
 	public void LevelComplete(Direction dir)
 	{
-		Debug.Log(dir);;
 		if (dir == Direction.x)
 			x_rot = true;
-		else
+		else if (dir == Direction.y)
 			y_rot = true;
-
-		if (x_rot && y_rot)
+		else
+			y_pos = true;
+		if (x_rot && y_rot && y_pos)
 			StartCoroutine(LevelWonTitle());
 	}
 
 	public enum Direction
 	{
 		x = 0,
-		y = 1
+		y = 1,
+		y_pos = 2,
 	}
 }

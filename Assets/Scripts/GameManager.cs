@@ -12,12 +12,8 @@ public class GameManager : MonoBehaviour {
 	public List<string> completed_levels = new List<string>();
 	[HideInInspector] public int numUnlockedLevels;
 	[HideInInspector] public bool loadedLevels = false;
-	[HideInInspector] public float minRangeY = 0f;
-	[HideInInspector] public float maxRangeY = 0f;
-	[HideInInspector] public float minRangeX = 0f;
-	[HideInInspector] public float maxRangeX = 0f;
 	[HideInInspector] public bool startedLevel = false;
-
+	[HideInInspector] public LevelRequirements l_requirements = new LevelRequirements();
 
 	bool buttonsInit = false;
 	// Use this for initialization
@@ -105,30 +101,41 @@ public class GameManager : MonoBehaviour {
 	{
 		Debug.Log("Level 1");
 		startedLevel = true;
-		minRangeY = 85f;
-		maxRangeY = 105f;
+		l_requirements.ClearPrevious();
+		l_requirements.min_y_rotations.Add(85f);
+		l_requirements.max_y_rotations.Add(95f);
 		SceneManager.LoadScene("lvl_1");
 	}
 
 	public void LoadLevel2()
 	{
+		l_requirements.ClearPrevious();
 		Debug.Log(completed_levels.Count);
-		if (completed_levels.Count >= 1)
+		if (numUnlockedLevels > 1)
 		{
 			startedLevel = true;
-			minRangeY = 70f;
-			maxRangeY = 80f;
-			minRangeX = 85;
-			maxRangeX = 100f;
+			l_requirements.min_y_rotations.Add(70f);
+			l_requirements.max_y_rotations.Add(80f);
+			l_requirements.min_x_rotations.Add(85f);
+			l_requirements.max_x_rotations.Add(100f);
 			SceneManager.LoadScene("lvl_2");
 		}
 	}
 
 	public void LoadLevel3()
 	{
+		l_requirements.ClearPrevious();
 		if (numUnlockedLevels >= 2)
 		{
-			Debug.Log("Level 3");
+			//First Object
+			l_requirements.min_y_rotations.Add(80f);
+			l_requirements.max_y_rotations.Add(90f);
+			//Second Object
+			l_requirements.min_y_positions.Add(15.8f);
+			l_requirements.max_y_positions.Add(16.2f);
+			l_requirements.min_y_rotations.Add(90f);
+			l_requirements.max_y_rotations.Add(108f);
+			SceneManager.LoadScene("lvl_3");
 		}
 	}
 }

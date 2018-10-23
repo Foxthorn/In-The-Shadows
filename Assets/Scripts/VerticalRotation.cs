@@ -5,12 +5,14 @@ using UnityEngine;
 public class VerticalRotation : MonoBehaviour {
 
 	public float rotationSpeed = 10f;
+	public int index = 0;
 
 	float vertical;
 	bool canRotate = false;
+	LevelRequirements l_requirements;
 	// Use this for initialization
 	void Start () {
-		
+		l_requirements = GameManager.gm.l_requirements;
 	}
 	
 	// Update is called once per frame
@@ -40,8 +42,9 @@ public class VerticalRotation : MonoBehaviour {
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.x >= GameManager.gm.minRangeX && transform.eulerAngles.x <= GameManager.gm.maxRangeX)
+			if (transform.eulerAngles.x >= l_requirements.min_x_rotations[index] && transform.eulerAngles.x <= l_requirements.max_x_rotations[index])
 			{
+				Debug.Log("X_ROT");
 				LevelManager.lm.LevelComplete(LevelManager.Direction.x);	
 			}
 		}
