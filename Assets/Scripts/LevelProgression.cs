@@ -37,6 +37,7 @@ public class LevelProgression : MonoBehaviour {
 
 	public void Quit()
 	{
+		
 		Application.Quit();
 	}
 }

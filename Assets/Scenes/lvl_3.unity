@@ -876,19 +876,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: dd837739ef2064fa8b96992f59f552a7, type: 3}
   m_PrefabInternal: {fileID: 1271450163}
---- !u!114 &1254978948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1254978947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 194304a6435ec404fa20991991bff539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 10
-  index: 0
 --- !u!114 &1254978949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 2038097287}
+  numObjects: 2
 --- !u!4 &1780717199
 Transform:
   m_ObjectHideFlags: 0

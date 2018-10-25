@@ -30,7 +30,7 @@ public class MoveObjects : MonoBehaviour {
 		}
 		if (canMove && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftAlt))
 			MoveObject();
-		Debug.Log(l_requirements.min_y_positions[index]);
+		CheckIfFinished();
 		shadow.transform.position = new Vector3(transform.position.x - 7f, transform.position.y + 0.3f, transform.position.z - 3f);		
 	}
 
@@ -43,11 +43,8 @@ public class MoveObjects : MonoBehaviour {
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.y >= l_requirements.min_y_positions[0] && transform.eulerAngles.y <= l_requirements.max_y_positions[0])
-			{
-				Debug.Log("POS");
-				LevelManager.lm.LevelComplete(LevelManager.Direction.y_pos);	
-			}
+			if (transform.position.y >= l_requirements.min_y_positions[index] && transform.position.y <= l_requirements.max_y_positions[index])
+				LevelManager.lm.LevelComplete(LevelManager.Direction.y_pos, transform.tag);
 		}
 		return false;
 	}

@@ -29,17 +29,16 @@ public class MainMenu : MonoBehaviour {
 	public void LoadLevelSelect()
 	{		
 		StartCoroutine(LoadLevel());
-		GameManager.gm.numUnlockedLevels = 1;
-		GameManager.gm.completed_levels.Add("lvl_1");
+		if (PlayerPrefs.HasKey("numUnlockedLevels"))
+			GameManager.gm.numUnlockedLevels = PlayerPrefs.GetInt("numUnlockedLevels");
+		else
+			GameManager.gm.numUnlockedLevels = 1;
 	}
 
 	public void LoadTest()
 	{
 		StartCoroutine(LoadLevel());
 		GameManager.gm.numUnlockedLevels = 3;
-		GameManager.gm.completed_levels.Add("lvl_1");
-		GameManager.gm.completed_levels.Add("lvl_2");
-		GameManager.gm.completed_levels.Add("lvl_3");
 	}
 
 	public void Quit()

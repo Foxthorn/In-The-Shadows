@@ -44,18 +44,12 @@ public class HorizontalRotation : MonoBehaviour {
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			Debug.Log(transform.eulerAngles.y <= l_requirements.max_y_rotations[index]);
 			if (transform.eulerAngles.y >= l_requirements.min_y_rotations[index] && transform.eulerAngles.y <= l_requirements.max_y_rotations[index])
-			{
-				Debug.Log("Y_ROT");
-				LevelManager.lm.LevelComplete(LevelManager.Direction.y);	
-			}
+				LevelManager.lm.LevelComplete(LevelManager.Direction.y, transform.tag);	
 			else if (transform.eulerAngles.y > 180f)
 			{
 				if (transform.eulerAngles.y <= 340f - l_requirements.max_y_rotations[index] && transform.eulerAngles.y <= 340f - l_requirements.min_y_rotations[index])
-				{
-					LevelManager.lm.LevelComplete(LevelManager.Direction.y);	
-				}
+					LevelManager.lm.LevelComplete(LevelManager.Direction.y, transform.tag);
 			}
 		}
 		return false;

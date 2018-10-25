@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,12 @@ public class LevelManager : MonoBehaviour {
 
 	public static LevelManager lm;
 	public GameObject title;
+	public int numObjects;
 
 	bool x_rot = false;
 	bool y_rot = false;
 	bool y_pos = false;
+	List<string> tags = new List<string>();
 	Text t;
 	// Use this for initialization
 	void Start () {
@@ -28,12 +31,22 @@ public class LevelManager : MonoBehaviour {
 		{
 			y_pos = true;
 		}
+		else if (scene.name == "lvl_3")
+		{
+			x_rot = true;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (t.fontSize >= 50) {
+			Thread.Sleep(1000);
 			SceneManager.LoadScene("Level_Won");
+		}
+		if (x_rot && y_rot && y_pos && tags.Count == numObjects)
+		{
+			GameManager.gm.busyLoadingLevel = false;
+			StartCoroutine(LevelWonTitle());
 		}
 	}
 
@@ -46,16 +59,23 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	public void LevelComplete(Direction dir)
+	public void LevelComplete(Direction dir, string tag)
 	{
 		if (dir == Direction.x)
+		{
 			x_rot = true;
+			if (!tags.Contains(tag))
+				tags.Add(tag);
+		}
 		else if (dir == Direction.y)
+		{
 			y_rot = true;
+			if (!tags.Contains(tag))
+				tags.Add(tag);
+		}
 		else
 			y_pos = true;
-		if (x_rot && y_rot && y_pos)
-			StartCoroutine(LevelWonTitle());
+
 	}
 
 	public enum Direction

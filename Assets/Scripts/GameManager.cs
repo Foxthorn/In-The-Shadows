@@ -9,13 +9,12 @@ public class GameManager : MonoBehaviour {
 	public static GameManager gm;
 	public List<GameObject> levels = new List<GameObject>();
 	public List<GameObject> level_buttons = new List<GameObject>();
-	public List<string> completed_levels = new List<string>();
 	[HideInInspector] public int numUnlockedLevels;
 	[HideInInspector] public bool loadedLevels = false;
 	[HideInInspector] public bool startedLevel = false;
+	[HideInInspector] public bool busyLoadingLevel = false;
 	[HideInInspector] public LevelRequirements l_requirements = new LevelRequirements();
 
-	bool buttonsInit = false;
 	// Use this for initialization
 	void Awake () {
 		if (gm == null)
@@ -23,6 +22,11 @@ public class GameManager : MonoBehaviour {
 		else
 			Destroy(gameObject);
 		DontDestroyOnLoad(gameObject);
+	}
+
+	public void SavePlayerProgress()
+	{
+		PlayerPrefs.SetInt("numUnlockedLevels", numUnlockedLevels);
 	}
 
 	public void LoadLevelScene()
@@ -36,6 +40,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown("escape") && !startedLevel)
+			SceneManager.LoadScene("Menu");
 		if (loadedLevels)
 			GetLevels();
 		if (levels.Count > 0 && !startedLevel)
@@ -58,7 +64,6 @@ public class GameManager : MonoBehaviour {
 			else if (button.transform.tag == "lvl_3")
 				b.onClick.AddListener(LoadLevel3);
 		}
-		buttonsInit = true;
 	}
 
 	public void GetLevels()
@@ -99,18 +104,20 @@ public class GameManager : MonoBehaviour {
 
 	public void LoadLevel1()
 	{
-		Debug.Log("Level 1");
 		startedLevel = true;
 		l_requirements.ClearPrevious();
 		l_requirements.min_y_rotations.Add(85f);
 		l_requirements.max_y_rotations.Add(95f);
-		SceneManager.LoadScene("lvl_1");
+		if (!busyLoadingLevel)
+		{
+			StartCoroutine(LoadLevel("LoadScene", "lvl_1"));
+			busyLoadingLevel = true;
+		}
 	}
 
 	public void LoadLevel2()
 	{
 		l_requirements.ClearPrevious();
-		Debug.Log(completed_levels.Count);
 		if (numUnlockedLevels > 1)
 		{
 			startedLevel = true;
@@ -118,7 +125,11 @@ public class GameManager : MonoBehaviour {
 			l_requirements.max_y_rotations.Add(80f);
 			l_requirements.min_x_rotations.Add(85f);
 			l_requirements.max_x_rotations.Add(100f);
-			SceneManager.LoadScene("lvl_2");
+			if (!busyLoadingLevel)
+			{
+				StartCoroutine(LoadLevel("LoadScene", "lvl_2"));
+				busyLoadingLevel = true;
+			}
 		}
 	}
 
@@ -135,7 +146,22 @@ public class GameManager : MonoBehaviour {
 			l_requirements.max_y_positions.Add(16.2f);
 			l_requirements.min_y_rotations.Add(90f);
 			l_requirements.max_y_rotations.Add(108f);
-			SceneManager.LoadScene("lvl_3");
+			if (!busyLoadingLevel)
+			{
+				StartCoroutine(LoadLevel("LoadScene", "lvl_3"));
+				busyLoadingLevel = true;
+			}
 		}
+	}
+
+	IEnumerator LoadLevel(string name, string lvl)
+	{
+		AsyncOperation async = SceneManager.LoadSceneAsync(name);
+
+        while (!async.isDone) 
+		{
+            yield return null;
+		}
+		LoadingScene.ls.LoadScene(lvl);
 	}
 }

@@ -44,8 +44,7 @@ public class VerticalRotation : MonoBehaviour {
 		{
 			if (transform.eulerAngles.x >= l_requirements.min_x_rotations[index] && transform.eulerAngles.x <= l_requirements.max_x_rotations[index])
 			{
-				Debug.Log("X_ROT");
-				LevelManager.lm.LevelComplete(LevelManager.Direction.x);	
+				LevelManager.lm.LevelComplete(LevelManager.Direction.x, transform.tag);	
 			}
 		}
 		return false;

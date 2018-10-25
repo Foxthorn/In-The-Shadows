@@ -852,6 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 2127000143}
+  numObjects: 1
 --- !u!4 &1206591966
 Transform:
   m_ObjectHideFlags: 0
@@ -881,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+  index: 0
   shadow: {fileID: 930503626}
 --- !u!114 &1284502483
 MonoBehaviour:
@@ -894,6 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+  index: 0
 --- !u!1001 &1321325391
 Prefab:
   m_ObjectHideFlags: 0
