@@ -32,12 +32,13 @@ public class LevelProgression : MonoBehaviour {
 	{		
 		StartCoroutine(LoadLevel());
 		GameManager.gm.numUnlockedLevels += 1;
+		GameManager.gm.SavePlayerProgress();
 		GameManager.gm.startedLevel = false;
 	}
 
 	public void Quit()
 	{
-		
+
 		Application.Quit();
 	}
 }

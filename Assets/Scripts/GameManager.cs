@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	public void SavePlayerProgress()
 	{
 		PlayerPrefs.SetInt("numUnlockedLevels", numUnlockedLevels);
+		PlayerPrefs.Save();
+		Debug.Log(PlayerPrefs.GetInt("numUnlockedLevels"));
 	}
 
 	public void LoadLevelScene()
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour {
 			InitButtons();
 		if (!startedLevel)
 			ActivateSpotLights();
+		if (numUnlockedLevels == 4)
+			PlayerPrefs.SetInt("numUnlockedLevels", 1);
 	}
 
 	void  InitButtons()
