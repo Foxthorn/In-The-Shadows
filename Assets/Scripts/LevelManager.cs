@@ -18,7 +18,6 @@ public class LevelManager : MonoBehaviour {
 		if (lm == null)
 			lm = this;
 		t = title.GetComponent<Text>();
-		Scene scene = SceneManager.GetActiveScene();
 	}
 	
 	// Update is called once per frame

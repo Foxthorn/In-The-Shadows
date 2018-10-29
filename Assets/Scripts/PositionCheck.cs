@@ -21,9 +21,6 @@ public class PositionCheck : MonoBehaviour {
 			vert = true;
 		if (position == null)
 			pos = true;
-		Debug.Log(transform.tag + "-" + hori);
-		Debug.Log(transform.tag + "-" + vert);
-		Debug.Log(transform.tag + "-" + pos);
 	}
 	
 	// Update is called once per frame
