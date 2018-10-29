@@ -39,12 +39,12 @@ public class MoveObjects : MonoBehaviour {
 		transform.Translate(transform.up * vertical * speed);
 	}
 
-	bool CheckIfFinished()
+	public bool CheckIfFinished()
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
 			if (transform.position.y >= l_requirements.min_y_positions[index] && transform.position.y <= l_requirements.max_y_positions[index])
-				LevelManager.lm.LevelComplete(LevelManager.Direction.y_pos, transform.tag);
+				return true;
 		}
 		return false;
 	}

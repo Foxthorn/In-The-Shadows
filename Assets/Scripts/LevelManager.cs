@@ -11,9 +11,6 @@ public class LevelManager : MonoBehaviour {
 	public GameObject title;
 	public int numObjects;
 
-	bool x_rot = false;
-	bool y_rot = false;
-	bool y_pos = false;
 	List<string> tags = new List<string>();
 	Text t;
 	// Use this for initialization
@@ -22,19 +19,6 @@ public class LevelManager : MonoBehaviour {
 			lm = this;
 		t = title.GetComponent<Text>();
 		Scene scene = SceneManager.GetActiveScene();
-		if (scene.name == "lvl_1")
-		{
-			x_rot = true;
-			y_pos = true;
-		}
-		else if (scene.name == "lvl_2")
-		{
-			y_pos = true;
-		}
-		else if (scene.name == "lvl_3")
-		{
-			x_rot = true;
-		}
 	}
 	
 	// Update is called once per frame
@@ -42,8 +26,9 @@ public class LevelManager : MonoBehaviour {
 		if (t.fontSize >= 50) {
 			Thread.Sleep(1000);
 			SceneManager.LoadScene("Level_Won");
+			GameManager.gm.finishedLevels.Add(SceneManager.GetActiveScene().name);
 		}
-		if (x_rot && y_rot && y_pos && tags.Count == numObjects)
+		if (tags.Count == numObjects)
 		{
 			GameManager.gm.busyLoadingLevel = false;
 			StartCoroutine(LevelWonTitle());
@@ -59,29 +44,16 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-	public void LevelComplete(Direction dir, string tag)
+	public void LevelComplete(string tag)
 	{
-		if (dir == Direction.x)
-		{
-			x_rot = true;
-			if (!tags.Contains(tag))
-				tags.Add(tag);
-		}
-		else if (dir == Direction.y)
-		{
-			y_rot = true;
-			if (!tags.Contains(tag))
-				tags.Add(tag);
-		}
-		else
-			y_pos = true;
-
+		Debug.Log(tag);
+		if (!tags.Contains(tag))
+			tags.Add(tag);
 	}
 
-	public enum Direction
+	public void RemoveTag(string tag)
 	{
-		x = 0,
-		y = 1,
-		y_pos = 2,
+		Debug.Log(tag);
+		tags.Remove(tag);
 	}
 }

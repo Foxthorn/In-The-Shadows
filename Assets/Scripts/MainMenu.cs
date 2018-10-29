@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour {
 		StartCoroutine(LoadLevel());
 		if (PlayerPrefs.HasKey("numUnlockedLevels"))
 			GameManager.gm.numUnlockedLevels = PlayerPrefs.GetInt("numUnlockedLevels");
-		else
+		if (GameManager.gm.numUnlockedLevels == 0)
 			GameManager.gm.numUnlockedLevels = 1;
 	}
 

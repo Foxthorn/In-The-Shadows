@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public List<GameObject> levels = new List<GameObject>();
 	public List<GameObject> level_buttons = new List<GameObject>();
 	[HideInInspector] public int numUnlockedLevels;
+	[HideInInspector] public List<string> finishedLevels = new List<string>();
 	[HideInInspector] public bool loadedLevels = false;
 	[HideInInspector] public bool startedLevel = false;
 	[HideInInspector] public bool busyLoadingLevel = false;
@@ -28,7 +29,6 @@ public class GameManager : MonoBehaviour {
 	{
 		PlayerPrefs.SetInt("numUnlockedLevels", numUnlockedLevels);
 		PlayerPrefs.Save();
-		Debug.Log(PlayerPrefs.GetInt("numUnlockedLevels"));
 	}
 
 	public void LoadLevelScene()
@@ -51,8 +51,11 @@ public class GameManager : MonoBehaviour {
 		if (level_buttons.Count > 0 && !startedLevel)
 			InitButtons();
 		if (!startedLevel)
+		{
 			ActivateSpotLights();
-		if (numUnlockedLevels == 4)
+			ChangeSpotlightColor();
+		}
+		if (finishedLevels.Count >= 3 || numUnlockedLevels >= 4)
 			PlayerPrefs.SetInt("numUnlockedLevels", 1);
 	}
 
@@ -90,6 +93,20 @@ public class GameManager : MonoBehaviour {
 			{
 				if (child.tag == "lvl_1" || child.tag == "lvl_2" || child.tag == "lvl_3")
 					level_buttons.Add(child.gameObject);
+			}
+		}
+	}
+
+	void ChangeSpotlightColor()
+	{
+		for(int i = 0; i < levels.Count; i++)
+		{
+			var spotlight = levels[i].transform.GetChild(0);
+			Light light = spotlight.gameObject.GetComponent<Light>();
+			for (int j = 0; j < finishedLevels.Count; j++)
+			{			
+				if (levels[i].transform.tag == finishedLevels[j])
+					light.color = new Color(0, 1, 0, 1);
 			}
 		}
 	}
@@ -150,6 +167,8 @@ public class GameManager : MonoBehaviour {
 			l_requirements.max_y_positions.Add(16.2f);
 			l_requirements.min_y_rotations.Add(90f);
 			l_requirements.max_y_rotations.Add(108f);
+			l_requirements.min_x_rotations.Add(-3.5f);
+			l_requirements.max_x_rotations.Add(3.5f);
 			if (!busyLoadingLevel)
 			{
 				StartCoroutine(LoadLevel("LoadScene", "lvl_3"));

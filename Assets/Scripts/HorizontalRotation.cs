@@ -40,16 +40,16 @@ public class HorizontalRotation : MonoBehaviour {
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + horizontal * rotationSpeed, transform.eulerAngles.z);
 	}
 
-	bool CheckIfFinished()
+	public bool CheckIfFinished()
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
 			if (transform.eulerAngles.y >= l_requirements.min_y_rotations[index] && transform.eulerAngles.y <= l_requirements.max_y_rotations[index])
-				LevelManager.lm.LevelComplete(LevelManager.Direction.y, transform.tag);	
+				return true;
 			else if (transform.eulerAngles.y > 180f)
 			{
 				if (transform.eulerAngles.y <= 340f - l_requirements.max_y_rotations[index] && transform.eulerAngles.y <= 340f - l_requirements.min_y_rotations[index])
-					LevelManager.lm.LevelComplete(LevelManager.Direction.y, transform.tag);
+					return true;
 			}
 		}
 		return false;

@@ -38,13 +38,16 @@ public class VerticalRotation : MonoBehaviour {
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x + vertical * rotationSpeed, transform.eulerAngles.y, transform.eulerAngles.z);
 	}
 
-	bool CheckIfFinished()
+	public bool CheckIfFinished()
 	{
 		if (!Input.GetKey(KeyCode.Mouse0))
 		{
-			if (transform.eulerAngles.x >= l_requirements.min_x_rotations[index] && transform.eulerAngles.x <= l_requirements.max_x_rotations[index])
+			if (l_requirements.min_x_rotations.Count != 0)
 			{
-				LevelManager.lm.LevelComplete(LevelManager.Direction.x, transform.tag);	
+				if (transform.eulerAngles.x >= l_requirements.min_x_rotations[index] && transform.eulerAngles.x <= l_requirements.max_x_rotations[index])
+				{
+					return true;
+				}
 			}
 		}
 		return false;
